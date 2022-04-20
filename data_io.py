@@ -260,7 +260,9 @@ def load_chunk(
     end_index_fea[-1] = end_index_fea[-1] - right
 
     # mean and variance normalization
-    data_set = (data_set - np.mean(data_set, axis=0)) / np.std(data_set, axis=0)
+    here_std = np.std(data_set, axis=0)
+    here_std[here_std == 0.] = 1.
+    data_set = (data_set - np.mean(data_set, axis=0)) / here_std
 
     # Label processing
     data_lab = data_lab - data_lab.min()

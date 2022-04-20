@@ -18,12 +18,29 @@ from data_io import read_vec_int_ark, write_mat
 
 
 # Run it for all the data chunks (e.g., train, dev, test) => uncomment
-
-lab_folder = "/users/parcollet/KALDI/kaldi-trunk/egs/timit/s5/exp/dnn4_pretrain-dbn_dnn_ali_test"
+lab_folder = "/home/tinazhang/Install/kaldi/egs/timit/s5/exp/dnn4_pretrain-dbn_dnn_ali"
 lab_opts = "ali-to-pdf"
-out_folder = "/users/parcollet/KALDI/kaldi-trunk/egs/timit/s5/data/raw_TIMIT_200ms/test"
-wav_lst = "/users/parcollet/KALDI/kaldi-trunk/egs/timit/s5/data/test/wav.lst"
-scp_file_out = "/users/parcollet/KALDI/kaldi-trunk/egs/timit/s5/data/raw_TIMIT_200ms/test/feats_raw.scp"
+out_folder = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/train"
+wav_lst = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/train/train-wav.lst"
+scp_file_out = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/train/feats_raw.scp"
+
+#lab_folder = "/home/tinazhang/Install/kaldi/egs/timit/s5/exp/dnn4_pretrain-dbn_dnn_ali_test"
+#lab_opts = "ali-to-pdf"
+#out_folder = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/test"
+#wav_lst = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/test/test-wav.lst"
+#scp_file_out = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/test/feats_raw.scp"
+
+#lab_folder = "/home/tinazhang/Install/kaldi/egs/timit/s5/exp/dnn4_pretrain-dbn_dnn_ali_dev"
+#lab_opts = "ali-to-pdf"
+#out_folder = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/dev"
+#wav_lst = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/dev/dev-wav.lst"
+#scp_file_out = "/home/tinazhang/Install/kaldi/egs/timit/s5/raw_TIMIT_200ms/dev/feats_raw.scp"
+
+#lab_folder = "/users/parcollet/KALDI/kaldi-trunk/egs/timit/s5/exp/dnn4_pretrain-dbn_dnn_ali_test"
+#lab_opts = "ali-to-pdf"
+#out_folder = "/users/parcollet/KALDI/kaldi-trunk/egs/timit/s5/data/raw_TIMIT_200ms/test"
+#wav_lst = "/users/parcollet/KALDI/kaldi-trunk/egs/timit/s5/data/test/wav.lst"
+#scp_file_out = "/users/parcollet/KALDI/kaldi-trunk/egs/timit/s5/data/raw_TIMIT_200ms/test/feats_raw.scp"
 
 # lab_folder='quick_test/dnn4_pretrain-dbn_dnn_ali_dev'
 # lab_opts='ali-to-pdf'
@@ -112,7 +129,7 @@ for sig_file in sig_lst:
     # Save the matrix into a kaldi ark
     out_file = out_folder + "/" + sig_id + ".ark"
     write_mat(out_folder, out_file, frame_all, key=sig_id)
-    print(sig_id)
+    #print(sig_id)
     scp_file.write(sig_id + " " + out_folder + "/" + sig_id + ".ark:" + str(len(sig_id) + 1) + "\n")
 
     N_fr_comp = 1 + math.floor((signal.shape[0] - 400) / 160)
